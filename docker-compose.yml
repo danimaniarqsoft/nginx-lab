@@ -1,0 +1,23 @@
+version: '3'
+services:
+  webserver:
+    image: nginx:latest
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./var/www:/var/www
+      - ./etc/nginx/conf.d/:/etc/nginx/conf.d/
+  app1:
+    image: jmalloc/echo-server
+    container_name: app1
+    ports:
+      - "8080:8080"
+  app2:
+    image: jmalloc/echo-server
+    container_name: app2
+    ports:
+      - "8081:8080"
