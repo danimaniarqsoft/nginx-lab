@@ -14,10 +14,14 @@ services:
   app1:
     image: jmalloc/echo-server
     container_name: app1
+    environment:
+      - LOG_HTTP_BODY="app 1 server"
     ports:
       - "8080:8080"
   app2:
     image: jmalloc/echo-server
     container_name: app2
+    environment:
+      - LOG_HTTP_BODY="app 2 server"
     ports:
       - "8081:8080"
